@@ -1,0 +1,23 @@
+{
+  "name": "real-estate-escrow",
+  "version": "1.0.0",
+  "description": "Real Estate Escrow using Solidity Smart Contracts built on Ethereum.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/karan2605/real-estate-escrow.git"
+  },
+  "author": "Karan Patel",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/karan2605/real-estate-escrow/issues"
+  },
+  "homepage": "https://github.com/karan2605/real-estate-escrow#readme",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^2.0.0",
+    "hardhat": "^2.12.0"
+  }
+}
