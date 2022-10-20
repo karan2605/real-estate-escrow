@@ -3,11 +3,14 @@
 pragma solidity ^0.8.0;
 
 interface IERC721 {
-    function transferFrom(address _from, address _to, uint256 _tokenId) external;
+    function transferFrom(
+        address _from,
+        address _to,
+        uint256 _tokenId
+    ) external;
 }
 
 contract Escrow {
-
     address public nftAddress;
     uint256 public nftID;
     uint256 public purchasePrice;
@@ -18,11 +21,11 @@ contract Escrow {
     address public lender;
 
     constructor(
-        address _nftAddress, 
-        uint256 _nftID, 
+        address _nftAddress,
+        uint256 _nftID,
         uint256 _purchasePrice,
         uint256 _escrowAmount,
-        address payable _seller, 
+        address payable _seller,
         address payable _buyer,
         address _inspector,
         address _lender
@@ -35,6 +38,15 @@ contract Escrow {
         buyer = _buyer;
         inspector = _inspector;
         lender = _lender;
+    }
+
+    // Put Under Contract (only buyer - payable escrow)
+    function depositEarnest() public payable {
+        require(msg.value >= escrowAmount);
+    }
+
+    function getBalance() public view returns(uint) {
+        return address(this).balance;
     }
 
     function finalizeSale() public {
