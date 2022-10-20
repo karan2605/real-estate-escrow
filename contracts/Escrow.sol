@@ -20,6 +20,21 @@ contract Escrow {
     address public inspector;
     address public lender;
 
+    modifier onlyBuyer() {
+        require(msg.sender == buyer, "Only buyer can call this method");
+        _;
+    }
+
+    modifier onlySeller() {
+        require(msg.sender == seller, "Only seller can call this method");
+        _;
+    }
+
+    modifier onlyInspector() {
+        require(msg.sender == inspector, "Only inspector can call this method");
+        _;
+    }
+
     constructor(
         address _nftAddress,
         uint256 _nftID,
@@ -41,7 +56,7 @@ contract Escrow {
     }
 
     // Put Under Contract (only buyer - payable escrow)
-    function depositEarnest() public payable {
+    function depositEarnest() public payable onlyBuyer{
         require(msg.value >= escrowAmount);
     }
 
