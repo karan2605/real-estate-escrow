@@ -38,6 +38,8 @@ contract Escrow {
     bool public inspectionPassed = false;
     mapping(address => bool) public approval;
 
+    receive() external payable {} // Let smart contract receive funds
+
     constructor(
         address _nftAddress,
         uint256 _nftID,
@@ -75,11 +77,26 @@ contract Escrow {
         return address(this).balance;
     }
 
+    // Cancel Sale (handle earnest desposit)
+    // if inspection status is not approved, refund, otherwise send to seller
+    function cancelSale() public {
+        if(inspectionPassed == false) {
+            payable(buyer).transfer(address(this).balance);
+        }
+        else {
+            payable(seller).transfer(address(this).balance);
+        }
+    }
+
     function finalizeSale() public {
         require(inspectionPassed, 'must pass inspection');
         require(approval[buyer], "must be approved by buyer");
         require(approval[seller], "must be approved by seller");
         require(approval[lender], "must be approved by lender");
+        require(address(this).balance >= purchasePrice, "must have enough ether for sale");
+
+        (bool success, ) = payable(seller).call{value: address(this).balance}("");
+        require(success);
 
         // Transfer ownership of property
         IERC721(nftAddress).transferFrom(seller, buyer, nftID);
