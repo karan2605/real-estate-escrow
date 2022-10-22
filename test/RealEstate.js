@@ -75,6 +75,21 @@ describe("RealEstate", () => {
       transaction = await escrow.connect(inspector).updateInspectionStatus(true)
       await transaction.wait()
       console.log("Inspector updates status")
+
+      // Buyer approves sale
+      transaction = await escrow.connect(buyer).approveSale()
+      await transaction.wait()
+      console.log("Buyer approves sale")
+
+      // Seller approves sale
+      transaction = await escrow.connect(seller).approveSale()
+      await transaction.wait()
+      console.log("Seller approves sale")
+
+      // Lender approves sale
+      transaction = await escrow.connect(lender).approveSale()
+      await transaction.wait()
+      console.log("Lender approves sale")
       
       // Finalize sale
       transaction = await escrow.connect(buyer).finalizeSale();
