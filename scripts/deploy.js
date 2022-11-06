@@ -42,10 +42,17 @@ async function main() {
     await transaction.wait()
   }
 
+  // Listing properties...
+  transaction = await escrow.connect(seller).list(1, buyer.address, tokens(20), tokens(10))
+  await transaction.wait()
 
+  transaction = await escrow.connect(seller).list(2, buyer.address, tokens(15), tokens(5))
+  await transaction.wait()
 
+  transaction = await escrow.connect(seller).list(3, buyer.address, tokens(10), tokens(5))
+  await transaction.wait()
 
-
+  console.log(`Finished.`)
 
 }
 
