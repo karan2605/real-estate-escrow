@@ -23,7 +23,19 @@ async function main() {
     await transaction.wait()
   }
 
-  
+  // Deploy Escrow
+  const Escrow = await ethers.getContractFactory('Escrow')
+  const escrow = await Escrow.deploy(
+    realEstate.address,
+    seller.address,
+    inspector.address,
+    lender.address
+  )
+  await escrow.deployed()
+
+
+
+
 
 }
 
