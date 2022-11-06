@@ -6,6 +6,10 @@
 // global scope, and execute the script.
 const hre = require("hardhat");
 
+const tokens = (n) => {
+  return ethers.utils.parseUnits(n.toString(), 'ether')
+}
+
 async function main() {
   // Setup accounts
   [buyer, seller, inspector, lender] = await ethers.getSigners()
