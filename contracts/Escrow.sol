@@ -97,13 +97,16 @@ contract Escrow {
         require(approval[_nftID][lender]);
         require(address(this).balance >= purchasePrice[_nftID]);
 
+        // Real estate is no longer on sale
         isListed[_nftID] = false;
 
+        // Contract transfers its balance to the seller
         (bool success, ) = payable(seller).call{value: address(this).balance}(
             ""
         );
         require(success);
 
+        // NFT transferred from the contract to the buyer
         IERC721(nftAddress).transferFrom(address(this), buyer[_nftID], _nftID);
     }
 
