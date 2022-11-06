@@ -7,20 +7,24 @@
 const hre = require("hardhat");
 
 async function main() {
-  const currentTimestampInSeconds = Math.round(Date.now() / 1000);
-  const ONE_YEAR_IN_SECS = 365 * 24 * 60 * 60;
-  const unlockTime = currentTimestampInSeconds + ONE_YEAR_IN_SECS;
+  // Setup accounts
+  [buyer, seller, inspector, lender] = await ethers.getSigners()
 
-  const lockedAmount = hre.ethers.utils.parseEther("1");
+  // Deploy Real Estate
+  const RealEstate = await ethers.getContractFactory('RealEstate')
+  const realEstate = await RealEstate.deploy()
+  await realEstate.deployed()
 
-  const Lock = await hre.ethers.getContractFactory("Lock");
-  const lock = await Lock.deploy(unlockTime, { value: lockedAmount });
+  console.log(`Deployed Real Estate Contract at: ${realEstate.address}`)
+  console.log(`Minting 3 properties...\n`)
 
-  await lock.deployed();
+  for (let i = 0; i < 3; i++) {
+    const transaction = await realEstate.connect(seller).mint(`https://ipfs.io/ipfs/QmQVcpsjrA6cr1iJjZAodYwmPekYgbnXGo4DFubJiLc2EB/${i + 1}.json`)
+    await transaction.wait()
+  }
 
-  console.log(
-    `Lock with 1 ETH and unlock timestamp ${unlockTime} deployed to ${lock.address}`
-  );
+  
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere
