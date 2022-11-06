@@ -12,7 +12,7 @@ const tokens = (n) => {
 
 async function main() {
   // Setup accounts
-  [buyer, seller, inspector, lender] = await ethers.getSigners()
+  const [buyer, seller, inspector, lender] = await ethers.getSigners()
 
   // Deploy Real Estate
   const RealEstate = await ethers.getContractFactory('RealEstate')
