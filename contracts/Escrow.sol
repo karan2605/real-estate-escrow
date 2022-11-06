@@ -15,6 +15,8 @@ contract Escrow {
     address public inspector;
     address public lender;
 
+    receive() external payable {}
+
     modifier onlyBuyer(uint256 _nftID) {
         require(msg.sender == buyer[_nftID], "Only buyer can call this method");
         _;
@@ -114,8 +116,6 @@ contract Escrow {
             payable(seller).transfer(address(this).balance);
         }
     }
-
-    receive() external payable {}
 
     function getBalance() public view returns (uint256) {
         return address(this).balance;
