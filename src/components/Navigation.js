@@ -16,10 +16,10 @@ const Navigation = ({ account, setAccount }) => {
     return (
         <Navbar variant="dark" bg="dark" fixed="top">
             <Container>
-                <Nav fil>
-                    <Nav.Link className="btn btn-primary me-2 btn-lg" href="#home">Buy</Nav.Link>
-                    <Nav.Link className="btn btn-primary me-2 btn-lg" href="#features">Rent</Nav.Link>
-                    <Nav.Link className="btn btn-primary me-2 btn-lg" href="#pricing">Sell</Nav.Link>
+                <Nav id="navbar">
+                    <Button className="btn btn-primary me-2 btn-lg" href="#home">Buy</Button>
+                    <Button className="btn btn-primary me-2 btn-lg" href="#features">Rent</Button>
+                    <Button className="btn btn-primary me-2 btn-lg" href="#pricing">Sell</Button>
                 </Nav>
 
                 <Nav.Item>
@@ -31,13 +31,13 @@ const Navigation = ({ account, setAccount }) => {
 
                 <Nav.Item>
                     {account ? (
-                        <Button
+                        <Button 
                             className="btn btn-primary btn-lg justify-content-end"
                         >
                             {account.slice(0, 6) + '...' + account.slice(38, 42)}
                         </Button>
                     ) : (
-                        <Button
+                        <Button id="button"
                             className="btn btn-primary btn-lg justify-content-end"
                             onClick={connectHandler}
                         >

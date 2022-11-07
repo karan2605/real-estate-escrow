@@ -13,6 +13,12 @@
   color: darkviolet;
 }
 
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+  font-family: "Roboto Mono", monospace !important;
+  background-color: darkviolet !important;
+  font-size: x-large !important;
+}
+
 .nav__brand img {
   max-width: 125px;
   height: auto;
