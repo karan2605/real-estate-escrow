@@ -1,5 +1,6 @@
-import { ethers } from 'ethers';
 import { useEffect, useState } from 'react';
+
+import Button from 'react-bootstrap/Button';
 
 import close from '../assets/close.svg';
 
@@ -139,26 +140,26 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
                     ) : (
                         <div>
                             {(account === inspector) ? (
-                                <button className='home__buy' onClick={inspectHandler} disabled={hasInspected}>
+                                <Button className='home__buy' onClick={inspectHandler} disabled={hasInspected}>
                                     Approve Inspection
-                                </button>
+                                </Button>
                             ) : (account === lender) ? (
-                                <button className='home__buy' onClick={lendHandler} disabled={hasLended}>
+                                <Button className='home__buy' onClick={lendHandler} disabled={hasLended}>
                                     Approve & Lend
-                                </button>
+                                </Button>
                             ) : (account === seller) ? (
-                                <button className='home__buy' onClick={sellHandler} disabled={hasSold}>
+                                <Button className='home__buy' onClick={sellHandler} disabled={hasSold}>
                                     Approve & Sell
-                                </button>
+                                </Button>
                             ) : (
-                                <button className='home__buy' onClick={buyHandler} disabled={hasBought}>
+                                <Button className='home__buy' onClick={buyHandler} disabled={hasBought}>
                                     Buy
-                                </button>
+                                </Button>
                             )}
 
-                            <button className='home__contact'>
+                            <Button className='home__contact'>
                                 Contact agent
-                            </button>
+                            </Button>
                         </div>
                     )}
 
@@ -182,9 +183,9 @@ const Home = ({ home, provider, account, escrow, togglePop }) => {
                 </div>
 
 
-                <button onClick={togglePop} className="home__close">
+                <Button onClick={togglePop} className="home__close">
                     <img src={close} alt="Close" />
-                </button>
+                </Button>
             </div>
         </div >
     );
