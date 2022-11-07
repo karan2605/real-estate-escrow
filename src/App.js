@@ -1,6 +1,10 @@
 import { useEffect, useState } from 'react';
 import { ethers } from 'ethers';
 
+// Styling
+import Card from 'react-bootstrap/Card';
+import Container from 'react-bootstrap/Container';
+import Button from 'react-bootstrap/Button';
 
 // Components
 import Navigation from './components/Navigation';
@@ -62,36 +66,34 @@ function App() {
   }
 
   return (
-    <div>
+    <div className='bg-dark'>
       <Navigation account={account} setAccount={setAccount} />
       <Search />
 
-      <div className='cards__section'>
+      <Container className='cards__section'>
 
         <h3>Homes For You</h3>
 
         <hr />
 
-        <div className='cards'>
+        <Container className='cards'>
           {homes.map((home, index) => (
-            <div className='card' key={index} onClick={() => togglePop(home)}>
-              <div className='card__image'>
-                <img src={home.image} alt="Home" />
-              </div>
-              <div className='card__info'>
-                <h4>{home.attributes[0].value} ETH</h4>
-                <p>
-                  <strong>{home.attributes[2].value}</strong> bds |
-                  <strong>{home.attributes[3].value}</strong> ba |
+            <Card className='card' key={index}>
+              <Card.Img src={home.image} alt="Home" />
+              <Card.Body className='card__info bg-dark'>
+                <Card.Title>{home.attributes[0].value} ETH</Card.Title>
+                <Card.Text>
+                  <strong>{home.attributes[2].value}</strong> bedrooms |
+                  <strong>{home.attributes[3].value}</strong> bathrooms |
                   <strong>{home.attributes[4].value}</strong> sqft
-                </p>
-                <p>{home.address}</p>
-              </div>
-            </div>
+                  <p>{home.address}</p>
+                </Card.Text>
+                <Button variant="primary" onClick={() => togglePop(home)}>Purchase</Button>
+              </Card.Body>
+            </Card>
           ))}
-        </div>
-
-      </div>
+        </Container>
+      </Container>
 
       {toggle && (
         <Home home={home} provider={provider} account={account} escrow={escrow} togglePop={togglePop} />

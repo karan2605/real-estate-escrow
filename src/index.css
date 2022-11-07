@@ -31,6 +31,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ------------------------------------------------------ */
+/* -- HEADER -- */
+
 header {
   background-image: url("./assets/banner.jpg");
   background-position: center;
@@ -77,4 +80,54 @@ header {
 
 .header__search:hover {
   outline: 1px solid var(--clr-blue);
+}
+
+/* ------------------------------------------------------ */
+/* -- CARDS -- */
+
+.cards__section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  font-family: "Roboto Mono", monospace !important;
+  color: white;
+}
+
+.cards__section h3 {
+  margin: 50px 0 20px;
+}
+
+.cards {
+  display: grid;
+  gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 350px), 1fr));
+  margin-top: 20px;
+}
+
+.card {
+  background-color: #292b2c;
+  border: 1px solid var(--clr-black);
+  margin: 10px auto;
+  cursor: pointer;
+  position: relative;
+  transition: all 250ms ease;
+  outline-color: darkviolet;
+}
+
+.card:hover {
+  box-shadow: 1px 1px 5px var(--clr-grey);
+}
+
+.card__image {
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+
+.card__image img {
+  max-width: 100%;
+}
+
+.card__info p {
+  font-family: "Roboto Mono", monospace !important;
 }
