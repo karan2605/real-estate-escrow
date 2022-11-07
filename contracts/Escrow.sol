@@ -1,6 +1,8 @@
 //SPDX-License-Identifier: Unlicense
 pragma solidity ^0.8.0;
 
+import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
+
 interface IERC721 {
     function transferFrom(
         address _from,
@@ -9,7 +11,7 @@ interface IERC721 {
     ) external;
 }
 
-contract Escrow {
+contract Escrow is ReentrancyGuard {
     address public nftAddress;
     address payable public seller;
     address public inspector;
