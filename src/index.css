@@ -3,8 +3,14 @@
 .nav__brand {
   display: flex;
   justify-content: center;
+  font-family: "Roboto Mono", monospace;
+  color: darkviolet;
   align-items: center;
   padding: 20px;
+}
+
+#title {
+  color: darkviolet;
 }
 
 .nav__brand img {
@@ -17,4 +23,52 @@ body {
   font-family: "Roboto Mono", monospace;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+header {
+  background-image: url("./assets/banner.jpg");
+  background-position: center;
+  background-size: cover;
+  opacity: 0.9;
+  min-height: 55vh;
+
+  position: relative;
+}
+
+.header__title {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  color: var(--clr-white);
+  font-size: 2em;
+  font-family: Roboto Mono, monospace;
+  font-size: xxx-large;
+  color: white;
+
+  width: 100%;
+  text-align: center;
+}
+
+.header__search {
+  padding: 25px;
+  min-width: 40%;
+
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: darkviolet;
+}
+
+.header__search::placeholder {
+  font-family: Roboto Mono, monospace;
+  font-size: 1.25em;
+  font-weight: 600;
+  color: darkviolet;
+}
+
+.header__search:hover {
+  outline: 1px solid var(--clr-blue);
 }

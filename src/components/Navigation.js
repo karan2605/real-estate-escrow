@@ -1,8 +1,10 @@
 import { ethers } from 'ethers';
 import logo from '../assets/logo.svg';
+
 import Nav from 'react-bootstrap/Nav';
 import Button from 'react-bootstrap/Button';
 import Navbar from 'react-bootstrap/Navbar';
+import Container from 'react-bootstrap/Container';
 
 const Navigation = ({ account, setAccount }) => {
     const connectHandler = async () => {
@@ -13,38 +15,37 @@ const Navigation = ({ account, setAccount }) => {
 
     return (
         <Navbar variant="dark" bg="dark" fixed="top">
-            <Nav className="me-auto">
-                <Nav.Link href="#home">Buy</Nav.Link>
-                <Nav.Link href="#features">Rent</Nav.Link>
-                <Nav.Link href="#pricing">Sell</Nav.Link>
-            </Nav>
-     
+            <Container>
+                <Nav fil>
+                    <Nav.Link className="btn btn-primary me-2 btn-lg" href="#home">Buy</Nav.Link>
+                    <Nav.Link className="btn btn-primary me-2 btn-lg" href="#features">Rent</Nav.Link>
+                    <Nav.Link className="btn btn-primary me-2 btn-lg" href="#pricing">Sell</Nav.Link>
+                </Nav>
 
-            <Nav.Item>
-                <div className='nav__brand'>
-                    <img src={logo} alt="Logo" />
-                    <Navbar.Brand href="#home">DecentrEstate</Navbar.Brand>
-                </div>
-            </Nav.Item>
+                <Nav.Item>
+                    <div className='nav__brand'>
+                        <img src={logo} alt="Logo" />
+                        <Navbar.Brand id="title" className="fs-1 fw-bold d-flex justify-content-center ">DecentrEstate</Navbar.Brand>
+                    </div>
+                </Nav.Item>
 
-            <Nav.Item>
-                {account ? (
-                    <Button
-                        type="button"
-                        className='justify-content-center'
-                    >
-                        {account.slice(0, 6) + '...' + account.slice(38, 42)}
-                    </Button>
-                ) : (
-                    <Button
-                        type="button"
-                        className="justify-content-end"
-                        onClick={connectHandler}
-                    >
-                        Connect
-                    </Button>
-                )}
-            </Nav.Item>
+                <Nav.Item>
+                    {account ? (
+                        <Button
+                            className="btn btn-primary btn-lg justify-content-end"
+                        >
+                            {account.slice(0, 6) + '...' + account.slice(38, 42)}
+                        </Button>
+                    ) : (
+                        <Button
+                            className="btn btn-primary btn-lg justify-content-end"
+                            onClick={connectHandler}
+                        >
+                            Connect
+                        </Button>
+                    )}
+                </Nav.Item>
+            </Container>
         </Navbar>
     );
 }
