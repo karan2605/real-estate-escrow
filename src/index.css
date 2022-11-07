@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+
 .nav__brand {
   display: flex;
   justify-content: center;
@@ -8,4 +10,11 @@
 .nav__brand img {
   max-width: 125px;
   height: auto;
+}
+
+body {
+  margin: 0;
+  font-family: "Roboto Mono", monospace;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
