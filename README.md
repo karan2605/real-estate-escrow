@@ -10,6 +10,7 @@
 
 ## Requirements For Initial Setup
 - Install [NodeJS](https://nodejs.org/en/)
+- Install [MetaMask](https://metamask.io/)
 
 ## Setting Up
 ### 1. Clone/Download the Repository
